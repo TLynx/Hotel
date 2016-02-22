@@ -1,4 +1,4 @@
-package ua.com.naukma.hotel.services;
+package ua.com.naukma.hotel.appServices;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

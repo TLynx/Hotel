@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>rooms</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.js"></script>
+    <script src="room.js"></script>
+</head>
+<body>
+<div ng-controller="RoomController">
+    <div ng-repeat="room in rooms ">
+        <p>{{room.price}}</p>
+        <p>{{room.type}}</p>
+        <p>{{room.status}}</p>
+
+    </div>
+    <p>{{rooms}}</p>
+</div>
+</body>
+</html>
