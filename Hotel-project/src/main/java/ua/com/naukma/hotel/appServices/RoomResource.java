@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.com.naukma.hotel.domain.model.Room;
@@ -15,7 +17,8 @@ import ua.com.naukma.hotel.domain.services.EntityService;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/api/room")
@@ -52,13 +55,20 @@ public class RoomResource {
     }
 
     // api/room?checkIn=28 & checkOut=29
-    //return empty collection if rooms that fulfill
+    //return empty collection if rooms that fulfill specified criteria
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Collection<Room> getRooms(@RequestParam String checkIn,@RequestParam String checkOut) throws ParseException {
         Date checkInDate = formater.parse(checkIn);
         Date checkOutDate = formater.parse(checkOut);
         LOGGER.info("check in {} , check out {}",checkInDate, checkOutDate);
         return service.getAll();
+    }
+
+    @ResponseStatus(value= HttpStatus.SERVICE_UNAVAILABLE)
+    @ExceptionHandler(Exception.class)
+    public void conflict(Exception e) {
+        LOGGER.info("error {}",e );
+
     }
 
 }

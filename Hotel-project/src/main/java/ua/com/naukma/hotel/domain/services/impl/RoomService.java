@@ -5,11 +5,14 @@ import org.springframework.stereotype.Service;
 import ua.com.naukma.hotel.dao.RoomRepository;
 import ua.com.naukma.hotel.domain.model.Room;
 import ua.com.naukma.hotel.domain.services.EntityService;
+import ua.com.naukma.hotel.domain.services.IRoomService;
 
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Service()
-public class RoomService implements EntityService<Room> {
+public class RoomService implements IRoomService {
 
     @Autowired
     private RoomRepository repository;
@@ -34,4 +37,8 @@ public class RoomService implements EntityService<Room> {
         return repository.findOne(id);
     }
 
+    @Override
+    public Collection<Room> getAvailableRooms(Date checkIn, Date checkOut) {
+        return null;
+    }
 }

@@ -11,6 +11,7 @@ import ua.com.naukma.hotel.domain.model.ReservationStatus;
 import ua.com.naukma.hotel.domain.services.EntityService;
 
 import javax.validation.Valid;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/reservation")
@@ -34,4 +35,10 @@ public class ReservationResource {
     public void updateReservation(@Valid @RequestBody Reservation reservation) {
         reservationService.create(reservation);
     }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public Collection<Reservation> retrieveReservation() {
+        return reservationService.getAll();
+    }
+
 }
