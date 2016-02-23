@@ -1,0 +1,88 @@
+
+
+
+.offer {
+	width: 250px;
+	background: rgb(63,76,107);
+	color: #f9f9f9;
+	margin: 5px;
+	float: left;
+}
+.type {
+	padding: 10px 0 0 0;
+}
+.type span {
+	display: block;
+	text-align: center;
+}
+.type span:first-of-type {
+	font-size: 23px;
+}
+.type span:last-of-type {
+	font-size: 13px;
+}
+.offer .price {
+	display: block;
+	width: 250px;
+	background: #292b2e;
+	margin: 15px 0 10px 0;
+	text-align: center;
+	font-size: 23px;
+	padding: 17px 0 17px 0;
+}
+ul {
+	display: block;
+	margin: 20px 0 10px 0;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
+	color: #999999;
+}
+li {
+	display: block;
+	margin: 10px 0 0 0;
+}
+button {
+	border: none;
+	border-radius: 40px;
+	background: #292b2e;
+	color: #f9f9f9;
+	padding: 10px 37px;
+	margin: 10px 0 20px 60px;
+}
+.scale {
+	transform: scale(1.2);
+	box-shadow: 0 0 4px 1px rgba(20, 20, 20, 0.8);
+}
+.scale button {
+	background: rgb(63,76,107);
+}
+.scale .price {
+	color: #64AAA4;
+}
+
+.suf{
+	font-size: 15px;
+}
+
+.result{
+	background: rgba(0,0,0,.7);
+	text-align: center;
+}
+
+.resButton{
+	width:120px;
+	overflow: hidden;
+}
+
+.resButton span:nth-child(2){
+	margin-left: 40px;
+}
+.resButton span:first-child{
+	transition: 0.5s;
+}
+
+.resButton:hover span:first-child{
+	margin-left: -95px;
+}
+

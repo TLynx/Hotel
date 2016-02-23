@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html ng-app="app">
 <head lang="en">
@@ -6,17 +5,50 @@
     <title>rooms</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="room.js"></script>
+
+    <link href="style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div ng-controller="RoomController">
-    <div ng-repeat="room in rooms ">
-        <p>{{room.price}}</p>
-        <p>{{room.type}}</p>
-        <p>{{room.status}}</p>
-
+    <div id="menu">
+        <ul>
+            <li>Price</li>
+            <li>Rooms</li>
+            <li>Reserved</li>
+            <li>Clients</li>
+        </ul>
     </div>
-    <p>{{rooms}}</p>
+    <div  id="addHolder">
+        <div id="addAction">+ New room</div>
+        <div id="addRoom">
+            Number: <input ng-model="roo.number" type="text" value=""><br>
+            Price: <input ng-model="roo.price" type="text" value=""><br>
+            Type: <input ng-model="roo.type" type="text" value=""><br>
+            Status: <input ng-model="roo.status" type="text" value=""><br>
+            <button ng-click="add()">update</button>
+        </div>
+        <div id="holder">
+            <div ng-repeat="room in rooms ">
+                <div class="item">
+                    <div class="room">{{room.number}}</div>
+                    <div class="info">
+                        Price: <input ng-model="room.price" type="text" value="{{room.price}}"><br>
+                        Type: <input ng-model="room.type" type="text" value="{{room.type}}"><br>
+                        Status: <input ng-model="room.status" type="text" value="{{room.status}}"><br>
+                        <button ng-click="update(room)">update</button>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
 </div>
+<script src="script.js"></script>
 </body>
 </html>

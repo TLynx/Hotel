@@ -7,6 +7,16 @@ application.controller("RoomController",function($scope, $resource) {
         $scope.rooms =  rooms;
     });
 
+   $scope.update= function(room){
+      room.$save();
+    }
+
+    $scope.add=function(){
+        console.log($scope.roo);
+        $scope.rooms.push($scope.roo);
+        Room.save($scope.roo);
+    }
+
 });
 
 
