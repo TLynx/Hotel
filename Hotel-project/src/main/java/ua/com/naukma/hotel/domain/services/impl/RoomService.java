@@ -39,6 +39,6 @@ public class RoomService implements IRoomService {
 
     @Override
     public Collection<Room> getAvailableRooms(Date checkIn, Date checkOut) {
-        return null;
+        return repository.getAvailableRooms(checkIn,checkOut);
     }
 }

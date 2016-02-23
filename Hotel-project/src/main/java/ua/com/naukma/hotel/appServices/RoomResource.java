@@ -4,15 +4,13 @@ package ua.com.naukma.hotel.appServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.com.naukma.hotel.domain.model.Room;
 import ua.com.naukma.hotel.domain.model.RoomStatus;
 import ua.com.naukma.hotel.domain.model.RoomType;
-import ua.com.naukma.hotel.domain.services.EntityService;
+import ua.com.naukma.hotel.domain.services.IRoomService;
 
 import javax.validation.Valid;
 import java.text.ParseException;
@@ -27,9 +25,8 @@ public class RoomResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(RoomResource.class);
     private SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
 
-    @Qualifier("roomService")
-    @Autowired()
-    private EntityService<Room> service;
+    @Autowired
+    private IRoomService service;
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createRoom(@Valid @RequestBody Room room) {
@@ -61,7 +58,7 @@ public class RoomResource {
         Date checkInDate = formater.parse(checkIn);
         Date checkOutDate = formater.parse(checkOut);
         LOGGER.info("check in {} , check out {}",checkInDate, checkOutDate);
-        return service.getAll();
+        return service.getAvailableRooms(checkInDate,checkOutDate);
     }
 
     @ResponseStatus(value= HttpStatus.SERVICE_UNAVAILABLE)
