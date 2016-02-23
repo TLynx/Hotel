@@ -30,7 +30,7 @@
                     <li>Smth</li>
                 </ul>
 
-                <button class="resButton" ng-click="selectRoom(room)"><span>Choose</span><span>35$/3days</span></button>
+                <button class="resButton" ng-click="selectRoom(room)"><span>Choose</span><span ng-model="res.totalPrice">{{room.price*diffDays}}</span><span>$/{{diffDays}}days</span></button>
             </div>
         </div>
         <div id="userData">

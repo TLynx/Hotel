@@ -13,14 +13,16 @@ import ua.com.naukma.hotel.domain.model.RoomType;
 import ua.com.naukma.hotel.domain.services.EntityService;
 
 import javax.validation.Valid;
-import java.util.Collection;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/room")
 public class RoomResource {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RoomResource.class);
+    private SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
 
     @Qualifier("roomService")
     @Autowired()
@@ -46,7 +48,17 @@ public class RoomResource {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Room get(@PathVariable int id) {
-        return new Room(RoomType.DOUBLE_DELUXE, RoomStatus.FREE,4234);
+        return new Room(RoomType.DOUBLE_DELUXE, RoomStatus.FREE,4234,190);
+    }
+
+    // api/room?checkIn=28 & checkOut=29
+    //return empty collection if rooms that fulfill
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public Collection<Room> getRooms(@RequestParam String checkIn,@RequestParam String checkOut) throws ParseException {
+        Date checkInDate = formater.parse(checkIn);
+        Date checkOutDate = formater.parse(checkOut);
+        LOGGER.info("check in {} , check out {}",checkInDate, checkOutDate);
+        return service.getAll();
     }
 
 }

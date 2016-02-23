@@ -1,5 +1,6 @@
 package ua.com.naukma.hotel.domain.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.com.naukma.hotel.dao.ReservationRepository;
 import ua.com.naukma.hotel.domain.model.Reservation;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Service
 public class ReservationService implements EntityService<Reservation> {
-
+    @Autowired
     private ReservationRepository repository;
 
     @Override

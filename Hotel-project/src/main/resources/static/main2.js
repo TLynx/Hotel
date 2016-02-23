@@ -1,6 +1,10 @@
 /**
  * Created by Администратор on 23.02.2016.
  */
-$(document).on("hover", ".offer", function() {
-    $(this).toggleClass("scale") ;
-});
+$(document).on({
+        mouseenter: function() {
+        $( this ).addClass( "scale" );
+    }, mouseleave: function() {
+        $( this ).removeClass( "scale" );
+    }
+},".offer");

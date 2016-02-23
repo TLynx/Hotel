@@ -10,7 +10,7 @@ public class Reservation {
     @GeneratedValue
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")
     private User user;
 
@@ -24,8 +24,12 @@ public class Reservation {
     @NotNull
     private Date checkOut;
 
+    @NotNull
+    private int totalPrice;
+
     @Enumerated(EnumType.STRING)
     private ReservationStatus status;
+
 
     public Reservation(User user, Room room) {
         this.user = user;
@@ -83,5 +87,13 @@ public class Reservation {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

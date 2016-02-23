@@ -1,6 +1,7 @@
 package ua.com.naukma.hotel.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class Room {
 
@@ -38,10 +40,11 @@ public class Room {
     }
 
 
-    public Room(RoomType type, RoomStatus status, int price) {
+    public Room(RoomType type, RoomStatus status, int price,int number) {
         this.type = type;
         this.status = status;
         this.price = price;
+        this.number=number;
     }
 
     public int getId() {

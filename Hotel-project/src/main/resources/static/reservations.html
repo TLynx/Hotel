@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div ng-controller="RoomController">
+        <div id="holder" >
+            <div ng-repeat="reserv in reservs ">
+                <div class="item">
+                    <div class="room">{{reserv.room.number}}</div>
+                    <div class="info">
+                        Price: <input ng-model="room.price" type="text" value="{{room.price}}"><br>
+                        Type: <input ng-model="room.type" type="text" value="{{room.type}}"><br>
+                        Status: <input ng-model="room.status" type="text" value="{{room.status}}"><br>
+                        <button ng-click="update(room)">update</button>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
