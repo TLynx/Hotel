@@ -1,0 +1,13 @@
+table {
+    font-family:"Trebuchet MS", Helvetica, sans-serif;
+    text-align:center;
+    border-collapse: collapse;
+}
+table tr:first-child{
+    background:rgb(63,76,107);
+    color: white;
+}
+tr td:first-child{
+    background:rgb(63,76,107);
+    color: white;
+}

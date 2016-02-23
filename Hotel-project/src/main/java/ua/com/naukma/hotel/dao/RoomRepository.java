@@ -11,8 +11,8 @@ import java.util.Date;
 
 
 public interface RoomRepository extends JpaRepository<Room,Integer> {
-  @Query("Select r FROM ROOM r where r.id not in (" +
-          "  Select res.room.id FROM RESERVATION res WHERE  res.room.checkIn between :checkIn AND  :checkOut " +
-          "or res.room.checkOut between :checkIn AND  :checkOut or ( res.room.checkIn < :checkIn and res.room.checkout > :checkOut)  ) ")
+  @Query("Select r FROM Room r where r.id not in (" +
+          "  Select res.room.id FROM Reservation res WHERE  res.checkIn between :checkIn AND  :checkOut " +
+          "or res.checkOut between :checkIn AND  :checkOut or ( res.checkIn < :checkIn and res.checkOut > :checkOut)  ) ")
   public Collection<Room> getAvailableRooms(@Param("checkIn") Date checkIn,@Param("checkOut")Date checkOut);
 }

@@ -1,5 +1,6 @@
 package ua.com.naukma.hotel.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -31,9 +32,8 @@ public class Room {
     @NotNull
     private int number;
 
-//    @JsonIgnore
-
-    @OneToMany(mappedBy = "room",fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "room")
     private List<Reservation> reservations = new ArrayList<>();
 
     public Room() {
