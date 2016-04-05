@@ -28,6 +28,7 @@ $(document).on("click",".resButton",function(){
     $("#offersHolder").css("display","none");
     $("#userData").css("display","block");
     $(".changeRoom").css("display","block");
+
 });
 
 $(document).on("click",".changeRoom",function(){
