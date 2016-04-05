@@ -12,6 +12,6 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     @Query("SELECT u FROM User u JOIN u.reservations res where res.room.status = 'occupied' ")
     Collection<User> getResidents();
 
-    @Query("SELECT u FROM User u JOIN u.reservations res where res.status = 'terminated' and YEAR(res.checkOut) >= YEAR(CURDATE())-1 ")
+    @Query("SELECT u FROM User u JOIN u.reservations res where res.status = 'processed' and YEAR(res.checkOut) >= YEAR(CURDATE())-1 ")
     Collection<User> getBookingHistory();
 }

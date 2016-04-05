@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.com.naukma.hotel.domain.model.Reservation;
 import ua.com.naukma.hotel.domain.model.ReservationStatus;
+import ua.com.naukma.hotel.domain.services.IRoomService;
 import ua.com.naukma.hotel.domain.services.ReservationService;
 
 import javax.validation.Valid;
@@ -22,6 +23,9 @@ public class ReservationResource {
     @Autowired
     private ReservationService reservationService;
 
+    @Autowired
+    private IRoomService roomService;
+
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.POST)
     public void createReservation(@Valid @RequestBody Reservation reservation) {
@@ -30,16 +34,22 @@ public class ReservationResource {
         reservationService.create(reservation);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(method = RequestMethod.PUT)
-    public void updateReservation(@Valid @RequestBody Reservation reservation) {
-        LOGGER.debug("PUT /api/reservation {}", reservation.getStatus());
-        reservationService.create(reservation);
-    }
-
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Reservation> retrievePlannedReservation() {
         return reservationService.getReservationByStatus(ReservationStatus.PLANNED);
     }
 
+    /**
+     * set Room status to OCCUPIED
+     * set Reservation status to PROCESSED
+     * @param reservation
+     */
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(method = RequestMethod.PUT)
+    public void process(@Valid @RequestBody Reservation reservation) {
+        reservation.setStatus(ReservationStatus.PROCESSED);
+        LOGGER.debug("PUT /api/reservation {}", reservation.getStatus());
+        reservationService.update(reservation);
+        roomService.activateByReservationId(reservation.getId());
+    }
 }
