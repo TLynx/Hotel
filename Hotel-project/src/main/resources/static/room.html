@@ -41,9 +41,9 @@
         <div class="addRoom">
             Number: <input ng-model="roo.number" type="text" value=""><br>
             Price: <input ng-model="roo.price" type="text" value=""><br>
-           <!-- Type: <select ng-model="roo.type" ng-repeat="type in types ">
-                     <option>{{type.name}}</option>
-                </select><br>    -->
+            Type: <select ng-model="roo.type" >
+                     <option ng-repeat="typ in roomNiceTypes ">{{typ}}</option>
+                </select><br>
             Status: <input ng-model="roo.status" type="text" value=""><br>
             <button ng-click="add()">update</button>
         </div>

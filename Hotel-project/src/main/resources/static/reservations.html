@@ -11,22 +11,31 @@
 </head>
 <body>
     <div ng-controller="reservController">
-        <div id="holder" >
-            <div ng-repeat="reserv in reservs ">
-                <div class="item">
-                    <div class="room">{{reserv.room.number}}</div>
-                    <div class="info">
-                        User:<span>{{reserv.user.name}} {{reserv.user.secondName}}</span><br>
-                        Room type:<span>{{reserv.room.type}}</span><br>
-                        Reserv from:<span>{{reserv.checkIn}}</span> to <span>{{reserv.checkOut}}</span><br><br>
-                        <!--<button ng-click="update(room)">update</button>-->
+            <table class="table-fill">
+                <thead>
+                    <tr>
+                        <th class="text-center">User</th>
+                        <th class="text-center">Room</th>
+                        <th class="text-center">From</th>
+                        <th class="text-center">To</th>
+                        <th class="text-center"></th>
+                        <th class="text-center"></th>
+                    </tr>
+                </thead>
+
+                    <tr ng-repeat="reserv in reservs ">
+                        <td class="text-center">{{reserv.user.name}} {{reserv.user.secondName}}</td>
+                        <td class="text-center">{{reserv.room.number}}</td>
+                        <td class="text-center">{{reserv.checkIn}}</td>
+                        <td class="text-center">{{reserv.checkOut}}</td>
+                        <td class="text-center"> <button ng-click="accept(reserv)">Accept</button></td>
+                        <td class="text-center"> <button ng-click="cancel(reserv)">Cancel</button></td>
+                    </tr>
 
 
-                    </div>
-                </div>
 
-            </div>
-        </div>
+
+            </table>
     </div>
     <script src="script.js"></script>
 </body>
