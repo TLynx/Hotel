@@ -21,7 +21,7 @@ import java.util.Date;
 @RestController
 @RequestMapping("/api/room")
 public class RoomResource {
-
+    //провірити рекуаред на реквест боді
     private static final Logger LOGGER = LoggerFactory.getLogger(RoomResource.class);
     private SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
 

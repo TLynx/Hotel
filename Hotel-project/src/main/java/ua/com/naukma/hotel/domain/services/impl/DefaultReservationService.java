@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.com.naukma.hotel.dao.ReservationRepository;
 import ua.com.naukma.hotel.domain.model.Reservation;
-import ua.com.naukma.hotel.domain.services.EntityService;
+import ua.com.naukma.hotel.domain.model.ReservationStatus;
+import ua.com.naukma.hotel.domain.services.ReservationService;
 
+import java.util.Collection;
 import java.util.List;
 
-@Service
-public class ReservationService implements EntityService<Reservation> {
+@Service("reservationService")
+public class DefaultReservationService implements ReservationService{
     @Autowired
     private ReservationRepository repository;
 
@@ -31,5 +33,10 @@ public class ReservationService implements EntityService<Reservation> {
     @Override
     public Reservation get(int id) {
         return repository.findOne(id);
+    }
+
+    @Override
+    public Collection<Reservation> getReservationByStatus(ReservationStatus status) {
+        return repository.getReservationByStatus(status);
     }
 }

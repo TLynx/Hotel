@@ -5,7 +5,6 @@ package ua.com.naukma.hotel.domain.model;
  */
 public enum RoomStatus {
     FREE,
-    RESERVED,
     OCCUPIED,
     UNAVAILABLE
 }

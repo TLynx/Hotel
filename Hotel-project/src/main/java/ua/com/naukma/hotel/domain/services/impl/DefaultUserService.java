@@ -4,12 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.com.naukma.hotel.dao.UserRepository;
 import ua.com.naukma.hotel.domain.model.User;
-import ua.com.naukma.hotel.domain.services.EntityService;
+import ua.com.naukma.hotel.domain.services.UserService;
 
+import java.util.Collection;
 import java.util.List;
 
-@Service
-public class UserService implements EntityService<User> {
+@Service("userService")
+public class DefaultUserService implements UserService {
 
     @Autowired
     private UserRepository repository;
@@ -32,5 +33,15 @@ public class UserService implements EntityService<User> {
     @Override
     public User get(int id) {
         return repository.getOne(id);
+    }
+
+    @Override
+    public Collection<User> getListOfResidents(){
+        return repository.getResidents();
+    }
+
+    @Override
+    public Collection<User> getBookingHistory() {
+        return repository.getBookingHistory();
     }
 }

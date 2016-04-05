@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.com.naukma.hotel.domain.model.Reservation;
 import ua.com.naukma.hotel.domain.model.ReservationStatus;
-import ua.com.naukma.hotel.domain.services.EntityService;
+import ua.com.naukma.hotel.domain.services.ReservationService;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -20,7 +20,7 @@ public class ReservationResource {
 
     @Qualifier("reservationService")
     @Autowired
-    private EntityService<Reservation> reservationService;
+    private ReservationService reservationService;
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.POST)
@@ -33,12 +33,13 @@ public class ReservationResource {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(method = RequestMethod.PUT)
     public void updateReservation(@Valid @RequestBody Reservation reservation) {
+        LOGGER.debug("PUT /api/reservation {}", reservation.getStatus());
         reservationService.create(reservation);
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Collection<Reservation> retrieveReservation() {
-        return reservationService.getAll();
+    public Collection<Reservation> retrievePlannedReservation() {
+        return reservationService.getReservationByStatus(ReservationStatus.PLANNED);
     }
 
 }

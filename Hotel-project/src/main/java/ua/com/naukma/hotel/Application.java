@@ -43,7 +43,7 @@ public class Application {
         return new CommandLineRunner() {
             @Override
             public void run(String... strings) throws Exception {
-                Room room = new Room(RoomType.QUAD_DELUXE, RoomStatus.FREE,1509,111);
+                Room room = new Room(RoomType.DOUBLE_MODERATE, RoomStatus.OCCUPIED,1509,111);
                 repository.save(room);
             }
         }   ;
