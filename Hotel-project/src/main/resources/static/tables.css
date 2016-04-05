@@ -1,5 +1,7 @@
 
-
+#offersHolder{
+	display: none;
+}
 
 .offer {
 	width: 250px;
@@ -86,3 +88,15 @@ button {
 	margin-left: -95px;
 }
 
+
+.changeDate{
+	display: none;
+}
+
+#userData{
+	display: none;
+}
+
+.changeRoom{
+	display: none;
+}

@@ -15,11 +15,11 @@
         <div id="selectDate">
             <input type="date" ng-model="res.checkIn" > <br>
             <input type="date" ng-model="res.checkOut" > <br>
-            <button ng-click="selectDate()">Select</button>
+            <button class="selectDateB" ng-click="selectDate()">Select</button>
         </div>
-        <button >Change date</button>
+        <button class="changeDate" >Change date</button>
         <div id="offersHolder">
-            <div class="offer" ng-repeat="room in rooms">
+            <div class="offer" ng-repeat="room in rooms | unique : 'type'">
                 <div class="type">
                     <span>{{room.type}}</span>
                 </div>
@@ -33,6 +33,7 @@
                 <button class="resButton" ng-click="selectRoom(room)"><span>Choose</span><span ng-model="res.totalPrice">{{room.price*diffDays}}</span><span>$/{{diffDays}}days</span></button>
             </div>
         </div>
+        <button class="changeRoom" >Change room</button>
         <div id="userData">
             Name:<input ng-model="res.user.name" type="text"><br>
             Second name:<input ng-model="res.user.secondName" type="text"><br>

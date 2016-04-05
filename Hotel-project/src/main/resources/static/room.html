@@ -15,17 +15,35 @@
     <div id="menu">
         <ul>
             <li>Price</li>
-            <li>Rooms</li>
-            <li>Reserved</li>
-            <li>Clients</li>
+            <li><a href="room.html">Rooms</a></li>
+            <li><a href="reservations.html">Reserved</a></li>
+            <li><a href="users.html">Clients</a></li>
         </ul>
     </div>
     <div  id="addHolder">
-        <div id="addAction">+ New room</div>
-        <div id="addRoom">
+        <!--  <div class="filters" >
+            Date : <input type="date">  <input type="date">
+            Status: <select>
+                        <option>All</option>
+                        <option>Free</option>
+                        <option>Reserved</option>
+                        <option>OCCUPIED</option>
+                        <option>UNAVAILABLE</option>
+                    </select>
+              <br>
+
+
+
+
+        </div>   -->
+
+        <div class="addAction">+ New room</div>
+        <div class="addRoom">
             Number: <input ng-model="roo.number" type="text" value=""><br>
             Price: <input ng-model="roo.price" type="text" value=""><br>
-            Type: <input ng-model="roo.type" type="text" value=""><br>
+           <!-- Type: <select ng-model="roo.type" ng-repeat="type in types ">
+                     <option>{{type.name}}</option>
+                </select><br>    -->
             Status: <input ng-model="roo.status" type="text" value=""><br>
             <button ng-click="add()">update</button>
         </div>
@@ -37,7 +55,7 @@
                         Price: <input ng-model="room.price" type="text" value="{{room.price}}"><br>
                         Type: <input ng-model="room.type" type="text" value="{{room.type}}"><br>
                         Status: <input ng-model="room.status" type="text" value="{{room.status}}"><br>
-                        <button ng-click="update(room)">update</button>
+                        <button ng-click="update(room)">Add</button>
 
 
                     </div>

@@ -27,7 +27,7 @@ body{
 	margin-left: 30px;
 }
 
-#addAction{
+.addAction{
 	width:150px;
 	height: 30px;
 	margin:5px;
@@ -40,7 +40,7 @@ body{
 	text-align: center;
 }
 
-#addRoom{
+.addRoom{
 	width: 300px;
 	margin:5px;
 	height: 0;
@@ -102,6 +102,10 @@ body{
 	 opacity:1;
 }
 .displa{
-	height:180px;
-	opacity:1;
+	height:150px;
+}
+
+a{
+	text-decoration: none;
+	color:black;
 }
