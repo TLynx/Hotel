@@ -1,0 +1,85 @@
+
+#wrapp{
+}
+#holder{
+    margin: 200px auto;
+    width:420px;
+    height:300px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.7);
+}
+
+input:focus {
+    outline:none;
+}
+
+
+.icon{
+    display:block;
+    opacity:.6;
+    width:38px;
+    height:38px;
+    float:left;
+    margin:1px;
+    border-right:1px solid grey;
+}
+
+
+#form:first-child{
+    padding-top:50px;
+}
+
+#form{
+    display:block;
+    margin-top:20px;
+    padding:10px;
+    text-align:center;
+}
+
+
+.bordered{
+    height:42px;
+    width:300px;
+    box-shadow:1px 0 7px rgba(0,0,0,.7);
+    margin:15px auto;
+}
+
+.inputs{
+    border:none;
+    width:250px;
+    height:40px;
+    float:left;
+    font-size:22px;
+    margin-left:1px;
+}
+
+.button{
+    display:block;
+    height:36px;
+    width:120px;
+    background:#71C671;
+    border:none;
+    box-shadow:1px 0 4px black;
+    margin:0 auto;
+    cursor:pointer;
+    font-size:18px;
+    color:rgba(0,0,0,.5);
+    font-weight: 600;
+}
+
+.button:active{
+    box-shadow:1px 0 2px black;;
+}
+
+#first{
+    font-family:"Trebuchet MS", Helvetica, sans-serif;
+    font-size:42px;
+    color:rgba(0,0,0,.4);
+    text-shadow:1px 0 2px rgba(0,0,0,.2);
+    font-weight: 800;
+}
+#second{
+    font-size:30px;
+    color:#71C671;
+    text-shadow:1px 0 2px rgba(0,0,0,.5);
+}
+
