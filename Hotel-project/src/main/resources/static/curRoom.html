@@ -19,7 +19,11 @@
                 <div class="info">
                     Price: <input ng-model="room.price" type="text" value="{{room.price}}"><br>
                     Type: <input ng-model="room.type" type="text" value="{{room.type}}"><br>
-                    Status: <input ng-model="room.status" type="text" value="{{room.status}}"><br>
+                    Status:
+                    <select ng-model="room.status" id = "myList"  >
+                        <option >FREE</option>
+                        <option>UNAVAILABLE</option>
+                    </select>
                     <button ng-click="update(room)">EDIT</button>
 
 
