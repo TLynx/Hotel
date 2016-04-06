@@ -8,6 +8,11 @@ application.controller("reservController",function($scope, $resource) {
         $scope.reservs=reservs;
         console.log($scope.reservs);
     });
-
+    $scope.dataTransform=function(data){
+        var date = new Date(data);
+        var dateToStr = date.toUTCString().split(' ');
+        var cleanDate = dateToStr[1] + ' ' + dateToStr[2] + ' ' + dateToStr[3] ;
+        return cleanDate;
+    };
 
 });

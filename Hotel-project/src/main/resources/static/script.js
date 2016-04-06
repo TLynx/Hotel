@@ -4,4 +4,11 @@ $(document).on("click", ".room", function() {
 
 $(document).on("click", ".addAction", function() {
 	$(".addRoom").toggleClass("displa") ;
-})
+});
+
+
+$(document).on("click", ".buttons", function() {
+	$(".buttons").removeClass("active") ;
+	$(this).addClass("active") ;
+});
+

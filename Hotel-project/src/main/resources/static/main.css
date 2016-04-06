@@ -107,3 +107,10 @@ h1{
 	text-shadow: -2px 2px 0px rgba(0,0,0,.7);
 	color:rgb(63,76,107) ;
 }
+
+
+#success{
+	font-size: 20px;
+	font-weight: bold;
+	color:rgb(0,204,102);
+}

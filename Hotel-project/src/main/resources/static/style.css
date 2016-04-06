@@ -109,4 +109,23 @@ a{
 	text-decoration: none;
 	color:black;
 }
+button:focus {outline:0;}
 
+.buttons{
+	color:#D5DDE5;;
+	background:#1b1e24;
+	border-radius:3px 3px 0 0;
+	font-size:16px;
+	border: 1px solid #1b1e24;
+	padding: 4px;
+	font-weight: bold;
+	margin: 0;
+}
+
+#firstButton{
+	margin-left:3px;
+}
+
+.active{
+	height:32px;
+}

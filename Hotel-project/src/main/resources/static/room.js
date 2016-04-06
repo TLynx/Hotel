@@ -6,42 +6,67 @@ application.controller("RoomController",function($scope, $resource) {
     var rooms = Room.query(function(){
         $scope.rooms =  rooms;
     });
+    $scope.roomTypes={
+        "Single standart":"SINGLE_STANDARD",
+        "Single moderate":"SINGLE_MODERATE",
+        "Single delux":"SINGLE_DELUXE",
+        "Double standart":"DOUBLE_STANDARD",
+        "Double moderate":"DOUBLE_MODERATE",
+        "Double delux":"DOUBLE_DELUXE",
+        "Triple standart":"TRIPLE_STANDARD",
+        "Triple moderate":"TRIPLE_MODERATE",
+        "Triple delux":"TRIPLE_DELUXE",
+        "Quad standart":"QUAD_STANDARD",
+        "Quad delux":"QUAD_DELUXE"
+    };
+    $scope.roomNiceTypes=[
+        "Single standart",
+        "Single moderate",
+        "Single delux",
+        "Double standart",
+        "Double moderate",
+        "Double delux",
+        "Triple standart",
+        "Triple moderate",
+        "Triple delux",
+        "Quad standart",
+        "Quad delux"
+    ];
+
    $scope.update= function(room){
       room.$save();
     } ;
 
-    $scope.add=function(){
-        console.log($scope.roo);
-        $scope.rooms.push($scope.roo);
-        Room.save($scope.roo);
+    $scope.add=function(roo){
+        roo.type=$scope.roomTypes[roo.type];
+        $scope.rooms.push(roo);
+        Room.save(roo);
     } ;
 
-    $scope.roomTypes={
-        "Одномісний стандарт":"SINGLE_STANDARD",
-        "Одномісний покращений":"SINGLE_MODERATE",
-        "Одномісний люкс":"SINGLE_DELUXE",
-        "Двомісний стандарт":"DOUBLE_STANDARD",
-        "Двомісний покращений":"DOUBLE_MODERATE",
-        "Двомісний люкс":"DOUBLE_DELUXE",
-        "Трьохмісний стандарт":"TRIPLE_STANDARD",
-        "Трьохмісний покращений":"TRIPLE_MODERATE",
-        "Трьохмісний люкс":"TRIPLE_DELUXE",
-        "Чотирьохмісний стандарт":"QUAD_STANDARD",
-        "Чотирьохмісний люкс":"QUAD_DELUXE"
+
+
+    $scope.all=function(){
+        var Room  = $resource('/api/room');
+        var rooms = Room.query(function(){
+            $scope.rooms =  rooms;
+        });
     };
-    $scope.roomNiceTypes=[
-        "Одномісний стандарт",
-        "Одномісний покращений",
-        "Одномісний люкс",
-        "Двомісний стандарт",
-        "Двомісний покращений",
-        "Двомісний люкс",
-        "Трьохмісний стандарт",
-        "Трьохмісний покращений",
-        "Трьохмісний люкс",
-        "Чотирьохмісний стандарт",
-        "Чотирьохмісний люкс"
-    ];
+    $scope.free=function(){
+        var Room  = $resource('/api/room/free');
+        var rooms = Room.query(function(){
+            $scope.rooms =  rooms;
+        });
+    };
+    $scope.soon=function(){
+        var Room  = $resource('/api/room/releasedSoon');
+        var rooms = Room.query(function(){
+            $scope.rooms =  rooms;
+        });
+    };
+
+
+
+
 
 
 

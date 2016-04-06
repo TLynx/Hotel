@@ -67,19 +67,20 @@ public class Application {
                 System.out.println("---     init db      ----");
                 Room room = new Room(RoomType.QUAD_DELUXE, RoomStatus.FREE,1509,111);
                 rRepository.save(room);
-                User user = new User("Maks","Lasd",12345);
+                User user = new User("Test","Test",12345);
                 Reservation reservation = new Reservation();
                 reservation.setRoom(room);
                 reservation.setUser(user);
                 Calendar instance = Calendar.getInstance();
                 instance.setTime(new Date());
-                instance.add(Calendar.DATE, 5);
+               // instance.add(Calendar.DATE, 5);
                 reservation.setCheckIn(instance.getTime());
                 reservation.setStatus(ReservationStatus.PROCESSED);
-                instance.add(Calendar.DATE, 7);
+                //instance.add(Calendar.DATE, 7);
                 reservation.setCheckOut(instance.getTime());
                 reservation.setTotalPrice(735);
                 repository.save(reservation) ;
+
             }
         }   ;
     }

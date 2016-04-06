@@ -9,35 +9,36 @@
     <script src="room.js"></script>
 
     <link href="style.css" type="text/css" rel="stylesheet">
+    <link href="table.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div ng-controller="RoomController">
-    <div id="menu">
-        <ul>
-            <li>Price</li>
-            <li><a href="room.html">Rooms</a></li>
-            <li><a href="reservations.html">Reserved</a></li>
-            <li><a href="users.html">Clients</a></li>
-        </ul>
-    </div>
-    <div  id="addHolder">
-        <!--  <div class="filters" >
-            Date : <input type="date">  <input type="date">
-            Status: <select>
-                        <option>All</option>
-                        <option>Free</option>
-                        <option>Reserved</option>
-                        <option>OCCUPIED</option>
-                        <option>UNAVAILABLE</option>
-                    </select>
-              <br>
+    <!-- <div id="menu">
+         <ul>
+             <li>Price</li>
+             <li><a href="room.html">Rooms</a></li>
+             <li><a href="reservations.html">Reserved</a></li>
+             <li><a href="users.html">Clients</a></li>
+         </ul>
+     </div>
+     <div  id="addHolder">
+           <div class="filters" >
+             Date : <input type="date">  <input type="date">
+             Status: <select>
+                         <option>All</option>
+                         <option>Free</option>
+                         <option>Reserved</option>
+                         <option>OCCUPIED</option>
+                         <option>UNAVAILABLE</option>
+                     </select>
+               <br>
 
 
 
 
-        </div>   -->
+         </div>   -->
 
-        <div class="addAction">+ New room</div>
+        <div class="addAction buttons">+ New room</div>
         <div class="addRoom">
             Number: <input ng-model="roo.number" type="text" value=""><br>
             Price: <input ng-model="roo.price" type="text" value=""><br>
@@ -45,26 +46,51 @@
                      <option ng-repeat="typ in roomNiceTypes ">{{typ}}</option>
                 </select><br>
             Status: <input ng-model="roo.status" type="text" value=""><br>
-            <button ng-click="add()">update</button>
-        </div>
-        <div id="holder">
-            <div ng-repeat="room in rooms ">
-                <div class="item">
-                    <div class="room">{{room.number}}</div>
-                    <div class="info">
-                        Price: <input ng-model="room.price" type="text" value="{{room.price}}"><br>
-                        Type: <input ng-model="room.type" type="text" value="{{room.type}}"><br>
-                        Status: <input ng-model="room.status" type="text" value="{{room.status}}"><br>
-                        <button ng-click="update(room)">Add</button>
-
-
-                    </div>
-                </div>
-
-            </div>
+            <button ng-click="add(roo)">update</button>
         </div>
 
-    </div>
+    <!-- <div id="holder">
+         <div ng-repeat="room in rooms ">
+             <div class="item">
+                 <div class="room">{{room.number}}</div>
+                 <div class="info">
+                     Price: <input ng-model="room.price" type="text" value="{{room.price}}"><br>
+                     Type: <input ng-model="room.type" type="text" value="{{room.type}}"><br>
+                     Status: <input ng-model="room.status" type="text" value="{{room.status}}"><br>
+                     <button ng-click="update(room)">Add</button>
+
+
+                 </div>
+             </div>
+
+         </div>
+     </div>  -->
+    <button id="firstButton" class="buttons active" ng-click="all()">All</button>
+    <button class="buttons" ng-click="free()">Free</button>
+    <button class="buttons" ng-click="soon()">Released soon</button>
+    <table class="table-fill">
+        <thead>
+        <tr>
+            <th class="text-center">Number</th>
+            <th class="text-center">Type</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Status</th>
+        </tr>
+        </thead>
+
+        <tr ng-repeat="room in rooms ">
+            <td class="text-center">{{room.number}}</td>
+            <td class="text-center">{{room.type}}</td>
+            <td class="text-center">{{room.price}}</td>
+            <td class="text-center">{{room.status}}</td>
+        </tr>
+
+
+
+
+    </table>
+
+ </div>
 
 
 </div>
@@ -72,4 +98,4 @@
 </body>
 </html>
 
-        <!--Вільні , заброньовані,сьогодні завтра,повідомлення бронювання -->
+     <!--Вільні , заброньовані,сьогодні завтра,повідомлення бронювання -->

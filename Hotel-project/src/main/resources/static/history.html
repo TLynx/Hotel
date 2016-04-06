@@ -25,8 +25,8 @@
         <tr ng-repeat="reserv in reservs ">
             <td class="text-center">{{reserv.user.name}} {{reserv.user.secondName}}</td>
             <td class="text-center">{{reserv.room.number}}</td>
-            <td class="text-center">{{reserv.checkIn}}</td>
-            <td class="text-center">{{reserv.checkOut}}</td>
+            <td class="text-center">{{dataTransform(reserv.checkIn)}}</td>
+            <td class="text-center">{{dataTransform(reserv.checkOut)}}</td>
         </tr>
 
 

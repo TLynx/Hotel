@@ -12,6 +12,7 @@
 </head>
 <body>
     <div ng-controller="reservController">
+            Name: <input ng-model="searchText">
             <table class="table-fill">
                 <thead>
                     <tr>
@@ -23,11 +24,11 @@
                     </tr>
                 </thead>
 
-                    <tr ng-repeat="reserv in reservs ">
+                    <tr ng-repeat="reserv in reservs  | filter:searchText ">
                         <td class="text-center">{{reserv.user.name}} {{reserv.user.secondName}}</td>
                         <td class="text-center">{{reserv.room.number}}</td>
-                        <td class="text-center">{{reserv.checkIn}}</td>
-                        <td class="text-center">{{reserv.checkOut}}</td>
+                        <td class="text-center">{{dataTransform(reserv.checkIn)}}</td>
+                        <td class="text-center">{{dataTransform(reserv.checkOut)}}</td>
                         <td class="text-center"> <button class="button" id="accept" ng-click="accept(reserv)">Accept</button></td>
                     </tr>
 

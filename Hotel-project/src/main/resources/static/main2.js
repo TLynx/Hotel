@@ -37,3 +37,11 @@ $(document).on("click",".changeRoom",function(){
     $(".changeRoom").css("display","none");
 });
 
+$(document).on("click",".resButton1",function(){
+    $("#offersHolder").css("display","none");
+    $("#userData").css("display","none");
+    $(".changeRoom").css("display","none");
+    $("#selectDate").css("display","none");
+    $(".changeDate").css("display","none");
+    $("#success").text("Success");
+});
