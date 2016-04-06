@@ -2,7 +2,7 @@
 var application = angular.module('app', ['ngResource']);
 
 application.controller("RoomController",function($scope, $resource) {
-    var Room  = $resource('/api/room');
+    var Room  = $resource('/api/room',{},{update : {method:"PUT"}});
     var rooms = Room.query(function(){
         $scope.rooms =  rooms;
     });
@@ -34,7 +34,7 @@ application.controller("RoomController",function($scope, $resource) {
     ];
 
    $scope.update= function(room){
-      room.$save();
+      room.$update();
     } ;
 
     $scope.add=function(roo){

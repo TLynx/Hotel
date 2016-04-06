@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>room</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="curRoom.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <link href="table.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div ng-controller="RoomController">
+    <div id="holder">
+        <div ng-repeat="room in rooms ">
+            <div class="item">
+                <div class="room">{{room.number}}</div>
+                <div class="info">
+                    Price: <input ng-model="room.price" type="text" value="{{room.price}}"><br>
+                    Type: <input ng-model="room.type" type="text" value="{{room.type}}"><br>
+                    Status: <input ng-model="room.status" type="text" value="{{room.status}}"><br>
+                    <button ng-click="update(room)">EDIT</button>
+
+
+                </div>
+            </div>
+            </idv>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
