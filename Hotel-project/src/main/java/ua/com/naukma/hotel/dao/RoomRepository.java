@@ -21,4 +21,9 @@ public interface RoomRepository extends JpaRepository<Room,Integer> {
      @Query("UPDATE Room r SET r.status = :status where r.id = (SELECT res.room.id FROM Reservation res where res.id=:id)")
      void updateByStatus(@Param("id") int reservationId,@Param("status") RoomStatus status);
 
+    @Query("Select r FROM Room r JOIN r.reservations res WHERE r.status = 'OCCUPIED' and  DATEDIFF(res.checkOut,CURDATE()) <=1 ")
+    Collection<Room> getRoomsWhichReleasedSoon();
+
+    @Query("Select r FROM Room r  WHERE r.status = 'FREE' ")
+    Collection<Room> getFree();
 }

@@ -5,11 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
+import ua.com.naukma.hotel.dao.ReservationRepository;
 import ua.com.naukma.hotel.dao.RoomRepository;
-import ua.com.naukma.hotel.domain.model.Room;
-import ua.com.naukma.hotel.domain.model.RoomStatus;
-import ua.com.naukma.hotel.domain.model.RoomType;
+import ua.com.naukma.hotel.domain.model.*;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -39,14 +40,47 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner demo( final RoomRepository repository) {
+    public CommandLineRunner demo(final RoomRepository repository ) {
         return new CommandLineRunner() {
             @Override
             public void run(String... strings) throws Exception {
-                Room room = new Room(RoomType.DOUBLE_MODERATE, RoomStatus.OCCUPIED,1509,111);
+                Room room = new Room(RoomType.DOUBLE_MODERATE, RoomStatus.FREE,700,7);
                 repository.save(room);
+                Room room7 = new Room(RoomType.DOUBLE_STANDARD, RoomStatus.FREE,450,3);
+                repository.save(room7);
+                Room room2 = new Room(RoomType.SINGLE_STANDARD, RoomStatus.FREE,250,2);
+                repository.save(room2);
+                Room room3 = new Room(RoomType.SINGLE_DELUXE, RoomStatus.FREE,450,10);
+                repository.save(room3);
+                Room room4 = new Room(RoomType.TRIPLE_MODERATE, RoomStatus.FREE,1509,4);
+                repository.save(room4);
+                Room room17 = new Room(RoomType.DOUBLE_DELUXE, RoomStatus.FREE,900,17);
+                repository.save(room17);
             }
         }   ;
     }
-
+    @Bean
+    public CommandLineRunner createReservation( final ReservationRepository repository, final RoomRepository rRepository) {
+        return new CommandLineRunner() {
+            @Override
+            public void run(String... strings) throws Exception {
+                System.out.println("---     init db      ----");
+                Room room = new Room(RoomType.QUAD_DELUXE, RoomStatus.FREE,1509,111);
+                rRepository.save(room);
+                User user = new User("Maks","Lasd",12345);
+                Reservation reservation = new Reservation();
+                reservation.setRoom(room);
+                reservation.setUser(user);
+                Calendar instance = Calendar.getInstance();
+                instance.setTime(new Date());
+                instance.add(Calendar.DATE, 5);
+                reservation.setCheckIn(instance.getTime());
+                reservation.setStatus(ReservationStatus.PROCESSED);
+                instance.add(Calendar.DATE, 7);
+                reservation.setCheckOut(instance.getTime());
+                reservation.setTotalPrice(735);
+                repository.save(reservation) ;
+            }
+        }   ;
+    }
 }

@@ -71,6 +71,14 @@ public class User {
         this.reservations = reservations;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -87,8 +95,8 @@ public class User {
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + secondName.hashCode();
+        int result = name!=null? name.hashCode() :17;
+        result = 31 * result + (secondName!= null ? secondName.hashCode() : 17);
         result = 31 * result + cellphone;
         return result;
     }

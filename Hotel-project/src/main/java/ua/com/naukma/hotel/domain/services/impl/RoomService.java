@@ -52,4 +52,14 @@ public class RoomService implements IRoomService {
         repository.updateByStatus(reservationId, RoomStatus.FREE);
     }
 
+    @Override
+    public Collection<Room> getRoomsWhichReleasedSoon() {
+        return repository.getRoomsWhichReleasedSoon();
+    }
+
+    @Override
+    public Collection<Room> getFree() {
+        return repository.getFree();
+    }
+
 }

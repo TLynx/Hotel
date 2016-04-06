@@ -4,12 +4,9 @@ package ua.com.naukma.hotel.appServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.com.naukma.hotel.domain.model.Room;
-import ua.com.naukma.hotel.domain.model.RoomStatus;
-import ua.com.naukma.hotel.domain.model.RoomType;
 import ua.com.naukma.hotel.domain.services.IRoomService;
 
 import javax.validation.Valid;
@@ -48,7 +45,7 @@ public class RoomResource {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Room get(@PathVariable int id) {
-        return new Room(RoomType.DOUBLE_DELUXE, RoomStatus.FREE,4234,190);
+        return service.get(id);
     }
 
     // api/room?checkIn=28 & checkOut=29
@@ -61,11 +58,13 @@ public class RoomResource {
         return service.getAvailableRooms(checkInDate,checkOutDate);
     }
 
-    @ResponseStatus(value= HttpStatus.SERVICE_UNAVAILABLE)
-    @ExceptionHandler(Exception.class)
-    public void conflict(Exception e) {
-        LOGGER.info("error {}",e );
-
+    @RequestMapping(value = "/releasedSoon", method = RequestMethod.GET)
+    public Collection<Room> getRoomsWhichReleasedSoon() {
+        return service.getRoomsWhichReleasedSoon();
     }
 
+    @RequestMapping(value = "/free", method = RequestMethod.GET)
+    public Collection<Room> getFreeRooms() {
+        return service.getFree();
+    }
 }

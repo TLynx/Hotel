@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="appp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="history.js"></script>
+    <link href="reserv.css" type="text/css" rel="stylesheet">
+    <link href="table.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div ng-controller="reservController">
+    <table class="table-fill">
+        <thead>
+        <tr>
+            <th class="text-center">User</th>
+            <th class="text-center">Room</th>
+            <th class="text-center">From</th>
+            <th class="text-center">To</th>
+        </tr>
+        </thead>
+
+        <tr ng-repeat="reserv in reservs ">
+            <td class="text-center">{{reserv.user.name}} {{reserv.user.secondName}}</td>
+            <td class="text-center">{{reserv.room.number}}</td>
+            <td class="text-center">{{reserv.checkIn}}</td>
+            <td class="text-center">{{reserv.checkOut}}</td>
+        </tr>
+
+
+
+
+    </table>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

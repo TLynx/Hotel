@@ -10,4 +10,6 @@ public interface IRoomService extends EntityService<Room> {
       public Collection<Room> getAvailableRooms(Date checkIn,Date checkOut);
       void activateByReservationId(int reservationId);
       void releaseByReservationId(int reservationId);
+      Collection<Room> getRoomsWhichReleasedSoon();
+      Collection<Room> getFree();
 }

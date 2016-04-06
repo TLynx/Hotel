@@ -12,6 +12,7 @@ import java.util.List;
 
 @Service("reservationService")
 public class DefaultReservationService implements ReservationService{
+
     @Autowired
     private ReservationRepository repository;
 
@@ -38,5 +39,10 @@ public class DefaultReservationService implements ReservationService{
     @Override
     public Collection<Reservation> getReservationByStatus(ReservationStatus status) {
         return repository.getReservationByStatus(status);
+    }
+
+    @Override
+    public Reservation findByUserName(String userName) {
+        return repository.findByUserName(userName);
     }
 }

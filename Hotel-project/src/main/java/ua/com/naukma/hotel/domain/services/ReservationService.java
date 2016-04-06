@@ -10,4 +10,5 @@ import java.util.Collection;
  */
 public interface ReservationService extends EntityService<Reservation>{
      Collection<Reservation> getReservationByStatus(ReservationStatus status);
+     Reservation findByUserName(String userName);
 }

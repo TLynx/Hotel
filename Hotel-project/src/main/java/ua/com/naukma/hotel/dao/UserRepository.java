@@ -9,9 +9,9 @@ import java.util.Collection;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
 
-    @Query("SELECT u FROM User u JOIN u.reservations res where res.room.status = 'occupied' ")
+    @Query("SELECT u FROM User u JOIN u.reservations res where res.room.status = 'OCCUPIED' ")
     Collection<User> getResidents();
 
-    @Query("SELECT u FROM User u JOIN u.reservations res where res.status = 'processed' and YEAR(res.checkOut) >= YEAR(CURDATE())-1 ")
+    @Query("SELECT u FROM User u JOIN u.reservations res where res.status = 'PROCESSED'and res.room.status = 'FREE' and YEAR(res.checkOut) >= YEAR(CURDATE())-1 ")
     Collection<User> getBookingHistory();
 }
