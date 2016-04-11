@@ -65,4 +65,14 @@ public class ReservationResource {
         roomService.update(room);
         reservationService.update(reservation);
     }
+
+    @RequestMapping(value = "/active",method = RequestMethod.GET)
+    public Collection<Reservation> getActiveReservations(){
+        return reservationService.getActiveReservation();
+    }
+
+    @RequestMapping(value = "/history",method = RequestMethod.GET)
+    public Collection<Reservation> getHistory(){
+        return reservationService.getHistory();
+    }
 }

@@ -3,7 +3,7 @@
  */
 var application = angular.module('appp', ['ngResource']);
 application.controller("reservController",function($scope, $resource) {
-    var Reservs  = $resource('/api/reservation/all');
+    var Reservs  = $resource('/api/reservation/history');
     var reservs = Reservs.query(function() {
         $scope.reservs=reservs;
         console.log($scope.reservs);

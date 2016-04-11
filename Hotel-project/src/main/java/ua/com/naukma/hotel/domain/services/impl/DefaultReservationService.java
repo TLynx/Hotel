@@ -45,4 +45,14 @@ public class DefaultReservationService implements ReservationService{
     public Reservation findByUserName(String userName) {
         return repository.findByUserName(userName);
     }
+
+    @Override
+    public Collection<Reservation> getActiveReservation() {
+        return repository.getActiveReservation();
+    }
+
+    @Override
+    public Collection<Reservation> getHistory() {
+        return repository.getHistory();
+    }
 }

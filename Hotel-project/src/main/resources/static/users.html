@@ -18,16 +18,22 @@
         <table class="table-fill">
             <thead>
             <tr>
+                <th class="text-center">Number</th>
                 <th class="text-center">Name</th>
                 <th class="text-center">Second name</th>
                 <th class="text-center">Cellphone</th>
+                <th class="text-center">From</th>
+                <th class="text-center">To</th>
             </tr>
             </thead>
 
-            <tr ng-repeat="user in users">
-                <td class="text-center">{{user.name}}</td>
-                <td class="text-center">{{user.secondName}}</td>
-                <td class="text-center">{{user.cellphone}}</td>
+            <tr ng-repeat="reserv in reservs">
+                <td class="text-center">{{reserv.room.number}}</td>
+                <td class="text-center">{{reserv.user.name}}</td>
+                <td class="text-center">{{reserv.user.secondName}}</td>
+                <td class="text-center">{{reserv.user.cellphone}}</td>
+                <td class="text-center">{{dataTransform(reserv.checkIn)}}</td>
+                <td class="text-center">{{dataTransform(reserv.checkOut)}}</td>
 
             </tr>
 

@@ -3,15 +3,15 @@
  */
 var application = angular.module('appp', ['ngResource']);
 application.controller("userController",function($scope, $resource) {
-    var Users  = $resource('/api/user/filter/residents');
-    var users = Users.query(function() {
-        $scope.users=users;
+    var Reservs  = $resource('/api/reservation/active');
+    var reservs = Reservs.query(function() {
+        $scope.reservs=reservs;
     });
 
     $scope.usersNow=function(){
-        var Users  = $resource('/api/user/filter/residents');
-        var users = Users.query(function() {
-            $scope.users=users;
+        var Reservs  = $resource('/api/reservation/active');
+        var reservs = Reservs.query(function() {
+            $scope.reservs=reservs;
         });
     }
     $scope.usersLastYear=function(){
@@ -20,4 +20,10 @@ application.controller("userController",function($scope, $resource) {
             $scope.users=users;
         });
     }
+    $scope.dataTransform=function(data){
+        var date = new Date(data);
+        var dateToStr = date.toUTCString().split(' ');
+        var cleanDate = dateToStr[1] + ' ' + dateToStr[2] + ' ' + dateToStr[3] ;
+        return cleanDate;
+    };
 });
