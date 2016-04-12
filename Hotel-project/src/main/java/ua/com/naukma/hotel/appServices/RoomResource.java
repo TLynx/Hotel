@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.com.naukma.hotel.domain.model.Room;
+import ua.com.naukma.hotel.domain.model.RoomStatus;
 import ua.com.naukma.hotel.domain.services.IRoomService;
 
 import javax.validation.Valid;
@@ -28,6 +29,7 @@ public class RoomResource {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createRoom(@Valid @RequestBody Room room) {
         LOGGER.info("room to create {}" ,room);
+        room.setStatus(RoomStatus.FREE);
         return ResponseEntity.ok(service.create(room));
     }
 

@@ -86,7 +86,7 @@ public class Application {
                     Room room1 = rooms[i];
                     Date date = fromDate[i];
                     instance1.setTime(date);
-                    int days = random.nextInt(7) + 1;
+                    int days = random.nextInt(4) + 1;
                     System.out.println("days = " + days);
                     instance1.add(Calendar.DATE,days);
                     Date till =instance1.getTime();

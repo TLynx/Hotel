@@ -2,6 +2,7 @@ package ua.com.naukma.hotel.domain.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -27,8 +28,10 @@ public class Reservation {
     private Date checkOut;
 
     @NotNull
+    @Min(0)
     private int totalPrice;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private ReservationStatus status;
 
