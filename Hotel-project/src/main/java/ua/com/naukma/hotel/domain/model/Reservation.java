@@ -1,6 +1,7 @@
 package ua.com.naukma.hotel.domain.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -21,6 +22,7 @@ public class Reservation {
     @NotNull
     private Date checkIn;
 
+    @Future
     @NotNull
     private Date checkOut;
 
