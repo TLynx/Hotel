@@ -13,6 +13,7 @@ public class GlobalDefaultExceptionHandler {
     @ResponseStatus(reason = "please contact the application's support team for more information")
     @ExceptionHandler(value = Exception.class )
     public void handleError(Exception e){
+        LOGGER.info("---GlobalDefaultExceptionHandler ---");
        LOGGER.error(e.getLocalizedMessage(),e);
     }
 }

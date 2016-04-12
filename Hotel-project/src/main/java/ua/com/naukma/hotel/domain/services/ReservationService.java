@@ -13,4 +13,5 @@ public interface ReservationService extends EntityService<Reservation>{
      Reservation findByUserName(String userName);
      Collection<Reservation> getActiveReservation();
      Collection<Reservation> getHistory();
+     void delete(int reservationId);
 }

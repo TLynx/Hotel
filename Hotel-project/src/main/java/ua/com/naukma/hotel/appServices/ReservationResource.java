@@ -75,4 +75,9 @@ public class ReservationResource {
     public Collection<Reservation> getHistory(){
         return reservationService.getHistory();
     }
+
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    public void deleteReservation(@PathVariable("id") int id){
+        reservationService.delete(id);
+    }
 }

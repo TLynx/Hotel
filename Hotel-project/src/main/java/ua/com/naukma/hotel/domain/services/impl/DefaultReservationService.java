@@ -55,4 +55,9 @@ public class DefaultReservationService implements ReservationService{
     public Collection<Reservation> getHistory() {
         return repository.getHistory();
     }
+
+    @Override
+    public void delete(int id) {
+        repository.delete(id);
+    }
 }
