@@ -2,38 +2,49 @@
 <html ng-app="appp">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>History</title>
+    <title>Reservation</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="history.js"></script>
+    <script src="reserv.js"></script>
     <link href="reserv.css" type="text/css" rel="stylesheet">
     <link href="table.css" type="text/css" rel="stylesheet">
     <link href="admins.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    <div id="role">Admin</div>
-    <a class="hyper" href="admin.html">Rooms</a>
-    <a class="hyper" href="reservations.html">Reservs</a>
-    <a class="hyper" href="users.html">Users</a>
-    <a class="hyper act" href="history.html">History</a>
-    <a class="hyper" href="curRoom.html">Edit</a>
+<div id="role">Receptionist</div>
+<a class="hyper" href="administrator.html">Rooms</a>
+<a class="hyper act" href="receptreservs.html">Reservs</a>
+<a class="hyper" href="receptusers.html">Users</a>
 <div ng-controller="reservController">
+    <label>Search: <input ng-model="searchText"></label>
     <table class="table-fill">
         <thead>
         <tr>
-            <th class="text-center">User</th>
             <th class="text-center">Room</th>
+            <th class="text-center">User</th>
+            <th class="text-center">Cellphone</th>
             <th class="text-center">From</th>
             <th class="text-center">To</th>
+            <th class="text-center"></th>
+            <th class="text-center"></th>
         </tr>
         </thead>
 
-        <tr ng-repeat="reserv in reservs ">
-            <td class="text-center">{{reserv.user.name}} {{reserv.user.secondName}}</td>
+        <tr ng-repeat="reserv in reservs  | filter:searchText ">
             <td class="text-center">{{reserv.room.number}}</td>
+            <td class="text-center">{{reserv.user.name}} {{reserv.user.secondName}}</td>
+            <td class="text-center">{{reserv.user.cellphone}}</td>
             <td class="text-center">{{dataTransform(reserv.checkIn)}}</td>
             <td class="text-center">{{dataTransform(reserv.checkOut)}}</td>
+            <td class="text-center">
+                <button class="button" id="accept" ng-click="accept(reserv)">Accept</button>
+            </td>
+            <td class="text-center">
+                <button class="button" id="cancel" ng-click="cancel(reserv)">Cancel</button>
+            </td>
+
+
         </tr>
 
 

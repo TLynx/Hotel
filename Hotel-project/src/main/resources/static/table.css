@@ -106,3 +106,18 @@ td.text-center {
     text-align: center;
 }
 
+
+#accept{
+    background: rgb(0,204,102);
+}
+#cancel{
+    background: rgb(255,80,80);
+}
+
+.button{
+    width: 80px;
+    height: 25px;
+    border:none;
+    cursor:pointer;
+    font-weight: 300;
+}

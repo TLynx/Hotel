@@ -41,6 +41,7 @@ application.controller("RoomController",function($scope, $resource) {
         roo.type=$scope.roomTypes[roo.type];
         $scope.rooms.push(roo);
         Room.save(roo);
+
     } ;
 
 
