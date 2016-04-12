@@ -3,7 +3,7 @@
  */
 var application = angular.module('appp', ['ngResource']);
 application.controller("reservController",function($scope, $resource) {
-    var Reservs  = $resource('/api/reservation',{},{update : {method:"PUT"}});
+    var Reservs  = $resource('/api/reservation/',{},{update : {method:"PUT"},delete : {method :"DELETE"}});
     var reservs = Reservs.query(function() {
         $scope.reservs=reservs;
         console.log($scope.reservs);
@@ -14,7 +14,9 @@ application.controller("reservController",function($scope, $resource) {
         reserv.$update();
     } ;
     $scope.cancel= function(reserv){
-        reserv.$update();
+        var ReservDelete  = $resource('/api/reservation/:Id',{Id:"@id"},{delete : {method :"DELETE"}});
+        $scope.reservs.pop(reserv);
+        ReservDelete.delete({Id:reserv.id});
     } ;
     $scope.dataTransform=function(data){
         var date = new Date(data);
