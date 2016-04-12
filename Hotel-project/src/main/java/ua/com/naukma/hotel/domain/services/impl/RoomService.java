@@ -2,6 +2,7 @@ package ua.com.naukma.hotel.domain.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.com.naukma.hotel.dao.RoomRepository;
 import ua.com.naukma.hotel.domain.model.Room;
 import ua.com.naukma.hotel.domain.model.RoomStatus;
@@ -10,7 +11,7 @@ import ua.com.naukma.hotel.domain.services.IRoomService;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-
+@Transactional
 @Service()
 public class RoomService implements IRoomService {
 
@@ -44,12 +45,7 @@ public class RoomService implements IRoomService {
 
     @Override
     public void activateByReservationId(int reservationId) {
-       repository.updateByStatus(reservationId, RoomStatus.OCCUPIED);
-    }
-
-    @Override
-    public void releaseByReservationId(int reservationId) {
-        repository.updateByStatus(reservationId, RoomStatus.FREE);
+       repository.updateByRoomStatus(reservationId, RoomStatus.OCCUPIED);
     }
 
     @Override
@@ -60,6 +56,11 @@ public class RoomService implements IRoomService {
     @Override
     public Collection<Room> getFree() {
         return repository.getFree();
+    }
+
+    @Override
+    public void updateByRoomStatus(int id, RoomStatus status) {
+        repository.updateByRoomStatus(id, status);
     }
 
 }

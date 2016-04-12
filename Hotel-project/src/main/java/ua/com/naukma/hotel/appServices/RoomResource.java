@@ -4,6 +4,7 @@ package ua.com.naukma.hotel.appServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.com.naukma.hotel.domain.model.Room;
@@ -65,8 +66,10 @@ public class RoomResource {
         return service.getRoomsWhichReleasedSoon();
     }
 
-    @RequestMapping(value = "/free", method = RequestMethod.GET)
-    public Collection<Room> getFreeRooms() {
-        return service.getFree();
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(value = "{id}/{status}", method = RequestMethod.PATCH)
+    public void updateStatus(@PathVariable Integer id, @PathVariable String status) {
+         service.updateByRoomStatus(id,RoomStatus.valueOf(status));
     }
+
 }
