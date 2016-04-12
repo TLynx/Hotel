@@ -9,8 +9,15 @@
     <script src="curRoom.js"></script>
     <link href="style.css" type="text/css" rel="stylesheet">
     <link href="table.css" type="text/css" rel="stylesheet">
+    <link href="admins.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+    <div id="role">Admin</div>
+    <a class="hyper" href="admin.html">Rooms</a>
+    <a class="hyper" href="reservations.html">Reservs</a>
+    <a class="hyper" href="users.html">Users</a>
+    <a class="hyper" href="history.html">History</a>
+    <a class="hyper  act" href="curRoom.html">Edit</a>
 <div ng-controller="RoomController">
     <div id="holder">
         <div ng-repeat="room in rooms ">

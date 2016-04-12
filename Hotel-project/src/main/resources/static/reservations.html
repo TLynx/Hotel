@@ -9,15 +9,23 @@
     <script src="reserv.js"></script>
     <link href="reserv.css" type="text/css" rel="stylesheet">
     <link href="table.css" type="text/css" rel="stylesheet">
+    <link href="admins.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+    <div id="role">Admin</div>
+    <a class="hyper" href="admin.html">Rooms</a>
+    <a class="hyper act" href="reservations.html">Reservs</a>
+    <a class="hyper" href="users.html">Users</a>
+    <a class="hyper" href="history.html">History</a>
+    <a class="hyper" href="curRoom.html">Edit</a>
     <div ng-controller="reservController">
            <label>Search: <input ng-model="searchText"></label>
         <table class="table-fill">
                 <thead>
                     <tr>
-                        <th class="text-center">User</th>
                         <th class="text-center">Room</th>
+                        <th class="text-center">User</th>
+                        <th class="text-center">Cellphone</th>
                         <th class="text-center">From</th>
                         <th class="text-center">To</th>
                         <th class="text-center"></th>
@@ -26,8 +34,9 @@
                 </thead>
 
                     <tr ng-repeat="reserv in reservs  | filter:searchText ">
-                        <td class="text-center">{{reserv.user.name}} {{reserv.user.secondName}}</td>
                         <td class="text-center">{{reserv.room.number}}</td>
+                        <td class="text-center">{{reserv.user.name}} {{reserv.user.secondName}}</td>
+                        <td class="text-center">{{reserv.user.cellphone}}</td>
                         <td class="text-center">{{dataTransform(reserv.checkIn)}}</td>
                         <td class="text-center">{{dataTransform(reserv.checkOut)}}</td>
                         <td class="text-center">

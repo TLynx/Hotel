@@ -1,12 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Administrator</title>
+    <title>Receptionist</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="room.js"></script>
     <link href="admins.css" type="text/css" rel="stylesheet">
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <link href="table.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-       <a class="hyper" href="room.html">Rooms</a>
-       <a class="hyper" href="reservations.html">Reservs</a>
+    <div id="role">Receptionist</div>
+    <a class="hyper act" href="administrator.html">Rooms</a>
+    <a class="hyper" href="receptreservs.html">Reservs</a>
+    <a class="hyper" href="receptusers.html">Users</a>
+    <div ng-controller="RoomController">
+
+
+        <div class="addAction buttons">+ New room</div>
+        <div class="addRoom">
+            Number: <input ng-model="roo.number" type="text" value=""><br>
+            Price: <input ng-model="roo.price" type="text" value=""><br>
+            Type: <select ng-model="roo.type" >
+            <option ng-repeat="typ in roomNiceTypes ">{{typ}}</option>
+        </select><br>
+            <button ng-click="add(roo)">Create</button>
+        </div>
+
+
+        <button id="firstButton" class="buttons active" ng-click="all()">All</button>
+        <button class="buttons" ng-click="free()">Free</button>
+        <button class="buttons" ng-click="soon()">Released soon</button>
+        <table class="table-fill">
+            <thead>
+            <tr>
+                <th class="text-center">Number</th>
+                <th class="text-center">Type</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Status</th>
+            </tr>
+            </thead>
+
+            <tr ng-repeat="room in rooms ">
+                <td class="text-center">{{room.number}}</td>
+                <td class="text-center">{{room.type}}</td>
+                <td class="text-center">{{room.price}}</td>
+                <td class="text-center">{{room.status}}</td>
+            </tr>
+
+
+
+
+        </table>
+
+    </div>
+
+
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -10,12 +10,12 @@ application.controller("reservController",function($scope, $resource) {
     });
 
     $scope.accept= function(reserv){
-        $scope.reservs.pop(reserv);
+        $scope.reservs.splice($scope.reservs.indexOf(reserv),1);
         reserv.$update();
     } ;
     $scope.cancel= function(reserv){
         var ReservDelete  = $resource('/api/reservation/:Id',{Id:"@id"},{delete : {method :"DELETE"}});
-        $scope.reservs.pop(reserv);
+        $scope.reservs.splice($scope.reservs.indexOf(reserv),1);
         ReservDelete.delete({Id:reserv.id});
     } ;
     $scope.dataTransform=function(data){
