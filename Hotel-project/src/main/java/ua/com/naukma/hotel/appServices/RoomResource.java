@@ -67,9 +67,9 @@ public class RoomResource {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(value = "{id}/{status}", method = RequestMethod.PATCH)
-    public void updateStatus(@PathVariable Integer id, @PathVariable String status) {
-         service.updateByRoomStatus(id,RoomStatus.valueOf(status));
+    @RequestMapping(value = "{id}", method = RequestMethod.PATCH)
+    public void updateStatus(@PathVariable Integer id) {
+         service.updateByRoomStatus(id,RoomStatus.FREE);
     }
 
 }
