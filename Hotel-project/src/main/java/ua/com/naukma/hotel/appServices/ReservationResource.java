@@ -76,6 +76,7 @@ public class ReservationResource {
         return reservationService.getHistory();
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public void deleteReservation(@PathVariable("id") int id){
         reservationService.delete(id);
